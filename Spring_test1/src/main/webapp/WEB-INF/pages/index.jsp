@@ -13,20 +13,60 @@
 	href="jquery-easyui-1.6.10/themes/default/easyui.css">
 <link rel="stylesheet" type="text/css"
 	href="jquery-easyui-1.6.10/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="jquery-easyui-1.6.10/demo/demo.css">
+<link rel="stylesheet" type="text/css"
+	href="jquery-easyui-1.6.10/demo/demo.css">
 <script type="text/javascript" src="jquery-easyui-1.6.10/jquery.min.js"></script>
 <script type="text/javascript"
 	src="jquery-easyui-1.6.10/jquery.easyui.min.js"></script>
-</head>
 <body>
-	<h2>Fluid Layout</h2>
+	<h2 align="center" style="color:#F00;font-size:32px;font-family:'微软雅黑'">相册</h2>
 	<div style="margin: 20px 0;"></div>
-	<div class="easyui-layout" style="width: 100%; height: 350px;">
-		<div id="p" data-options="region:'west'" title="左树"
+	<div class="easyui-layout" style="width: 100%; height: 768px;">
+		<div id="p" data-options="region:'west'" title="导航"
 			style="width: 25%; padding: 10px">
-			<p>width: 25%</p>
+			<div style="margin: 20px 0;"></div>
+			<div class="easyui-panel" style="padding: 5px">
+				<ul id="tt" class="easyui-tree"
+					data-options="
+				url: 'jquery-easyui-1.6.10/demo/tree/tree_data1.json',
+				method: 'get',
+				animate: true,
+				onContextMenu: function(e,node){
+					e.preventDefault();
+					$(this).tree('select',node.target);
+					$('#mm').menu('show',{
+						left: e.pageX,
+						top: e.pageY
+					});
+				}
+			"></ul>
+			</div>
 		</div>
-		<div data-options="region:'center'" title="右表"></div>
+		<div id="conter" data-options="region:'center'" title="内容">
+			<div id="context"></div>
+			<div id="ccontext"></div>
+			<div id="cccontext"></div>
+		</div>
 	</div>
+	<script type="text/javascript">
+		$('#tt').tree({
+			onClick : function(node) {
+				var cont="";
+				var data = node.text;
+				var id = node.id;
+				var url = "http://localhost:8091/doConterTest01.do";
+				var params = {
+					"data" : data,
+					"id":id
+				};
+				console.log(params);
+				$.post(url, params, function(result) {
+					cont=result.message;
+					console.log(cont);
+					$("#context").html(cont);			
+				}, "json");
+			}
+		});
+	</script>
 </body>
 </html>

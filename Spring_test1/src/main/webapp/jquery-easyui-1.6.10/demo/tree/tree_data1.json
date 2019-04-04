@@ -1,49 +1,50 @@
 [{
 	"id":1,
-	"text":"My Documents",
+	"text":"首选项",
 	"children":[{
 		"id":11,
-		"text":"Photos",
+		"text":"风景",
 		"state":"closed",
 		"children":[{
 			"id":111,
-			"text":"Friend"
+			"text":"蓝天白云"
 		},{
 			"id":112,
-			"text":"Wife"
+			"text":"三川地貌"
 		},{
 			"id":113,
-			"text":"Company"
+			"text":"风水宝地"
 		}]
 	},{
 		"id":12,
-		"text":"Program Files",
+		"text":"美女",
+		"state":"closed",
 		"children":[{
 			"id":121,
-			"text":"Intel"
+			"text":"二次元"
 		},{
 			"id":122,
-			"text":"Java",
+			"text":"女神",
 			"attributes":{
 				"p1":"Custom Attribute1",
 				"p2":"Custom Attribute2"
 			}
 		},{
 			"id":123,
-			"text":"Microsoft Office"
+			"text":"唯美"
 		},{
 			"id":124,
-			"text":"Games",
+			"text":"典雅",
 			"checked":true
 		}]
 	},{
 		"id":13,
-		"text":"index.html"
+		"text":"连接地址1"
 	},{
 		"id":14,
-		"text":"about.html"
+		"text":"连接地址2"
 	},{
 		"id":15,
-		"text":"welcome.html"
+		"text":"连接地址3"
 	}]
 }]
