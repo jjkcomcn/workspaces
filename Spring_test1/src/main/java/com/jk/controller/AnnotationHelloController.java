@@ -37,7 +37,8 @@ public class AnnotationHelloController {
 
 	@RequestMapping("doConterTest01")
 	@ResponseBody
-	public JsonResult doConterTest01(String data, Integer id) {
+	public JsonResult doConterTest01(String data, Integer id,String str) {
+		System.out.println(str);
 		data = "<h5 align='center' style='color:green'>" + data + "</h5>";
 		String top = "<div align='center' style='margin:5px'><img src='photo/";
 		String butt = ".jpg' width='65%' height='65%'/></div>";

@@ -57,7 +57,8 @@
 				var url = "http://localhost:8091/doConterTest01.do";
 				var params = {
 					"data" : data,
-					"id":id
+					"id":id,
+					"str":"你好！"
 				};
 				console.log(params);
 				$.post(url, params, function(result) {

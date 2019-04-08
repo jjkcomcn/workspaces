@@ -29,13 +29,21 @@
 			isRoot : true,
 			nodes : []
 		},
+		data : {
+			simpleData : {//简单数据模式
+				enable : true,
+				idKey : "id",
+				pIdKey : "pId",
+				rootPId : ""
+			}
+		},
 		callback : { //回调函数
 			/**
 			 * event:鼠标事件
 			 * treeId：树的容器id
 			 * treeNode：当前点击的节点
 			 */
-			onClick: zTreeOnClick
+			onClick : zTreeOnClick
 		}
 	};
 	$(document).ready(function() {
@@ -48,8 +56,9 @@
 		}, "json");
 	});
 
-	function zTreeOnClick(event, treeId, treeNode){
-		console.log(treeNode.tId + ", " + treeNode.name);
+	function zTreeOnClick(event, treeId, treeNode) {
+		console.log("id:"+treeNode.id + ", name:" + treeNode.name+",pId:"+treeNode.pId);
+		console.log(treeNode);
 	}
 </script>
 
