@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-<!-- 引入Jsp标准标签库 -->
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,7 +17,7 @@
 #d1 {
 	margin: auto;
 	width: 700px;
-	border: 1px solid #F00;
+	border: 0px solid #F00;
 }
 
 a {
@@ -61,31 +58,21 @@ p {
 </style>
 </head>
 <body>
+	<h1 style="text-align: center">树修改</h1>
 	<div id="d1">
-		<table width="100%" algin="center" border="1">
-			<tr align="center">
-				<td colspan="5"><h2>树信息</h2></td>
+		<table id="table" width="100%" algin="center" border="1"
+			style="text-align: center; margin-top: 30px;">
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>open</th>
+				<th>pId</th>
+				<th>操作</th>
 			</tr>
-			<tr align="center">
-				<td>ID</td>
-				<td>name</td>
-				<td>open</td>
-				<td>pId</td>
-				<td>操作</td>
-			</tr>
-			<!-- 遍历返回结果 -->
-			<c:forEach items="${ findTreeTest }" var="u">
-				<tr align="center">
-					<td target="id">${u.id}</td>
-					<td target="name">${u.name}</td>
-					<td target="open">${u.open }</td>
-					<td target="pId">${u.pId }</td>
-					<td target="update" onclick="update(this)">更新</td>
-				</tr>
-			</c:forEach>
 		</table>
 	</div>
 	<div class="modal hide">
+
 		<p>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id：<input name="id" type="text"
 				readonly="true">
@@ -106,18 +93,41 @@ p {
 	</div>
 </body>
 <script type="text/javascript">
+	$(document)
+			.ready(
+					function() {
+						var url = "http://localhost:8091/doZnodes.do";
+						$
+								.get(
+										url,
+										function(result) {
+											var data = result.data;
+											var ht = "";
+											for (i = 0; i < data.length; i++) {
+												var value = data[i];
+												ht = ht
+														+ "<tr><td target='id'>"
+														+ value.id + "</td>"
+														+ "<td target='name'>"
+														+ value.name + "</td>"
+														+ "<td target='open'>"
+														+ value.open + "</td>"
+														+ "<td target='pId'>"
+														+ value.pId + "</td>";
+												ht = ht
+														+ "<td><a href = '#' onclick = 'update(this)'>修改</a></<td></tr>";
+											}
+											$("#table").append(ht);
+										}, "json");
+					});
+
 	function update(datas) {
-		var td = $(datas).parent().children("td");
-		var td1 = td.eq(0).text();
-		var td2 = td.eq(1).text();
-		var td3 = td.eq(2).text();
-		var td4 = td.eq(3).text();
-		console.log("id:" + td1 + ",anme:" + td2 + ",open:" + td3 + ",pId:"
-				+ td4);
+		var td = $(datas).parent().parent().children("td");
 		$('.hide').removeClass('hide');
 		td.each(function() {
 			//获取target值
 			var tar_val = $(this).attr('target');
+			console.log(tar_val);
 			var con = $(this).text();
 			$('.modal input[name="' + tar_val + '"]').val(con);
 		});
@@ -132,22 +142,20 @@ p {
 		var p = $(this).parent().parent().children("p").children("input");
 		var params = {
 			"id" : p[0].value,
-			"name" : "你好",
+			"name" : p[1].value,
 			"open" : p[2].value,
 			"pId" : p[3].value
 		};
 		console.log(params);
 		var url = "http://localhost:8091/updatezTree.do";
 
-		$.ajax({
-			type : 'post',
-			url : url,
-			contentType : 'application/json;charset=utf-8',
-			dataType : 'json',
-			//数据格式是json串
-			data : params,
-			success : function(data) {//测试能不能返回数据
-				console.log(data);
+		$.post(url, params, function(result) {
+			cont = result.message;
+			if (cont == 'update ok') {
+				$('.modal,.shade').addClass('hide');
+				window.location.reload();
+			} else {
+				alert(cont);
 			}
 		});
 	});

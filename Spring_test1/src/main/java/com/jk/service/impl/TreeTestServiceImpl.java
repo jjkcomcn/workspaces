@@ -22,4 +22,10 @@ public class TreeTestServiceImpl implements TreeService{
 		return findTreeTest;
 	}
 
+	@Override
+	public int updatezTree(TreeTestDao tree) {
+		int up = treeTestMapper.updatezTree(tree);
+		return up;
+	}
+
 }

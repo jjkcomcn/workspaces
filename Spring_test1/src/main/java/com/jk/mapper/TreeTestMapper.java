@@ -7,4 +7,6 @@ import com.jk.dao.TreeTestDao;
 public interface TreeTestMapper {
 
 	List<TreeTestDao> findTreeTest();
+
+	int updatezTree(TreeTestDao tree);
 }

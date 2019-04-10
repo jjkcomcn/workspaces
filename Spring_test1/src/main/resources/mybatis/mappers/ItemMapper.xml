@@ -8,4 +8,9 @@
 	<select id="findTreeTest" resultType="com.jk.dao.TreeTestDao">
 		select * from treeitem
 	</select>
+
+	<update id="updatezTree" parameterType="com.jk.dao.TreeTestDao">
+		update treeitem set name
+		= #{name}, pId = #{pId}, open = #{open} where id=#{id}
+	</update>
 </mapper>
