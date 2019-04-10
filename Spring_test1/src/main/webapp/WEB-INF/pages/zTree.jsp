@@ -82,7 +82,6 @@
 		var url = "http://localhost:8091/doZnodes.do";
 		$.get(url, function(result) {
 			var zNodes = result.data;
-			console.log(zNodes);
 			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
 		}, "json");
 	});

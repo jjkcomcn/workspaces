@@ -35,6 +35,15 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
+	<!--定义文件上传视图解析器 规定id的值必须为multipartResolver -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!--定义文件上传最大值 10M 1024*1024*10 =10485760 -->
+		<property name="maxUploadSize" value="10485760" />
+		<!--定义文件上传的编码 -->
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">
