@@ -58,6 +58,9 @@ p {
 </style>
 </head>
 <body>
+	<div id="treeTop" style="text-align: right; font-size: 28px;">
+		<a href="http://localhost:8091/dozTree.do">返回</a>
+	</div>
 	<h1 style="text-align: center">树修改</h1>
 	<div id="d1">
 		<table id="table" width="100%" algin="center" border="1"

@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -18,11 +17,21 @@ public class ZTreeController {
 	@Autowired
 	private TreeService treeServide;
 
+	/**
+	 * 加载首页
+	 * 
+	 * @return
+	 */
 	@RequestMapping("dozTree")
 	public String dozTree() {
 		return "zTree";
 	}
 
+	/**
+	 * 获取初始树数据
+	 * 
+	 * @return
+	 */
 	@RequestMapping("doZnodes")
 	@ResponseBody
 	public JsonResult getZnodes() {
@@ -30,10 +39,13 @@ public class ZTreeController {
 		return new JsonResult(findTreeTest);
 	}
 
+	/**
+	 * 访问树修改页面
+	 * 
+	 * @return
+	 */
 	@RequestMapping("findTreeList")
-	public String findTreeList(Model model) {
-		List<TreeTestDao> findTreeTest = treeServide.findTreeTest();
-		model.addAttribute("findTreeTest", findTreeTest);
+	public String findTreeList() {
 		return "treeUpdate";
 	}
 
@@ -42,6 +54,13 @@ public class ZTreeController {
 		return "model";
 	}
 
+	/**
+	 * 修改树数据
+	 * 
+	 * @param tree
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping("updatezTree")
 	@ResponseBody
 	public JsonResult updatezTree(TreeTestDao tree) throws Exception {

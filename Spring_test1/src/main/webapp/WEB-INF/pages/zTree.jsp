@@ -29,6 +29,9 @@
 	type="text/css">
 </head>
 <body>
+	<div id="treeTop" style="text-align: right; font-size: 24px;">
+		<a href="http://localhost:8091/findTreeList.do">后台管理</a>
+	</div>
 	<div class="easyui-layout" style="width: 100%; height: 768px;">
 		<div id="p" data-options="region:'west'" title="导航"
 			style="width: 25%; padding: 10px">
@@ -39,7 +42,8 @@
 			</div>
 		</div>
 		<div id="conter" data-options="region:'center'" title="内容">
-			<div id="context" style="border: 3px solid #E0E0E0;text-align:center;"></div>
+			<div id="context"
+				style="border: 3px solid #E0E0E0; text-align: center;"></div>
 		</div>
 	</div>
 </body>
@@ -73,6 +77,7 @@
 			onClick : zTreeOnClick
 		}
 	};
+	//获取节点数据
 	$(document).ready(function() {
 		var url = "http://localhost:8091/doZnodes.do";
 		$.get(url, function(result) {

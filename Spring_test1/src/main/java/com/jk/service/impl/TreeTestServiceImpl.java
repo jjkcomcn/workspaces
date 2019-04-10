@@ -18,7 +18,6 @@ public class TreeTestServiceImpl implements TreeService{
 	@Override
 	public List<TreeTestDao> findTreeTest() {
 		List<TreeTestDao> findTreeTest = treeTestMapper.findTreeTest();
-		System.out.println(findTreeTest);
 		return findTreeTest;
 	}
 
