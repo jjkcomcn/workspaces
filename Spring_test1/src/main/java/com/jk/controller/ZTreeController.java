@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.jk.dao.Id;
 import com.jk.dao.TreeTestDao;
 import com.jk.service.TreeService;
 
@@ -71,5 +73,23 @@ public class ZTreeController {
 		}
 		return new JsonResult("update error");
 
+	}
+
+	@RequestMapping("doGetStr")
+	@ResponseBody
+	public JsonResult doGetStr(Id data) {
+		String ht;
+		if (!(StringUtils.isEmpty(data.getId()))) {
+			String id = data.getId();
+			ht = treeServide.findPhotoByIds(id);
+		} else {
+			String pId = data.getpId();
+			if ("1".equals(pId)) {
+				ht = treeServide.findPhotoAll();
+			} else {
+				ht = treeServide.findPhotoBypId(pId);
+			}
+		}
+		return new JsonResult(ht);
 	}
 }
