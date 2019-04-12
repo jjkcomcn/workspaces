@@ -34,8 +34,11 @@ public class TreeTestServiceImpl implements TreeService {
 		List<PicUploadResult> pics = treeTestMapper.fingPhotoById(id);
 		if (pics.size() != 0) {
 			for (PicUploadResult pic : pics) {
-				htm = htm + "<div align='center' style='margin:5px'><img src='" + pic.getUrl() + "' name ='"
-						+ pic.getName() + "' id ='" + pic.getId() + "' width='65%' height='65%'/></div>";
+				String ids = pic.getUrl().substring(21, 53);
+				htm = htm
+						+ "<div style='margin-top:10px;width:20%;height:300px;border: 5px solid #E0E0E0; float: left;'><img src='"
+						+ pic.getUrl() + "' name ='" + pic.getName() + "' id ='" + ids + "' onclick='openpic(" + '"'
+						+ ids + '"' + ")'/></div>";
 				;
 			}
 		}
@@ -48,8 +51,11 @@ public class TreeTestServiceImpl implements TreeService {
 		List<PicUploadResult> pics = treeTestMapper.fingPhotoBypId(pId);
 		if (pics.size() != 0) {
 			for (PicUploadResult pic : pics) {
-				htm = htm + "<div align='center' style='margin:5px'><img src='" + pic.getUrl() + "' name ='"
-						+ pic.getName() + "' id ='" + pic.getId() + "' width='65%' height='65%'/></div>";
+				String id = pic.getUrl().substring(21, 53);
+				htm = htm
+						+ "<div style='margin-top:10px;width:20%;height:300px;border: 5px solid #E0E0E0; float: left;'><img src='"
+						+ pic.getUrl() + "' name ='" + pic.getName() + "' id ='" + id + "' onclick='openpic(" + '"' + id
+						+ '"' + ")'/></div>";
 				;
 			}
 		}
@@ -62,8 +68,11 @@ public class TreeTestServiceImpl implements TreeService {
 		List<PicUploadResult> pics = treeTestMapper.fingPhotoAll();
 		if (pics.size() != 0) {
 			for (PicUploadResult pic : pics) {
-				htm = htm + "<div align='center' style='margin:5px'><img src='" + pic.getUrl() + "' name ='"
-						+ pic.getName() + "' id ='" + pic.getId() + "' width='65%' height='65%'/></div>";
+				String id = pic.getUrl().substring(21, 53);
+				htm = htm
+						+ "<div style='margin-top:10px;width:20%;height:300px;border: 5px solid #E0E0E0; float: left;'><img src='"
+						+ pic.getUrl() + "' name ='" + pic.getName() + "' id ='" + id + "' onclick='openpic(" + '"' + id
+						+ '"' + ")'/></div>";
 				;
 			}
 		}
