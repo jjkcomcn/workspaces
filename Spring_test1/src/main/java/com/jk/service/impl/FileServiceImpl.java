@@ -25,7 +25,6 @@ public class FileServiceImpl implements FileService {
 	private String localDir = "src/main/webapp/upload/";
 	// private String urlPath;
 
-	@Override
 	public PicUploadResult UploadFile(MultipartFile uploadFile, String id, String pId, String name) {
 		PicUploadResult result = new PicUploadResult();
 		result.setId(id);

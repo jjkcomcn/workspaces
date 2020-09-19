@@ -16,19 +16,16 @@ public class TreeTestServiceImpl implements TreeService {
 	@Autowired
 	private TreeTestMapper treeTestMapper;
 
-	@Override
 	public List<TreeTestDao> findTreeTest() {
 		List<TreeTestDao> findTreeTest = treeTestMapper.findTreeTest();
 		return findTreeTest;
 	}
 
-	@Override
 	public int updatezTree(TreeTestDao tree) {
 		int up = treeTestMapper.updatezTree(tree);
 		return up;
 	}
 
-	@Override
 	public String findPhotoByIds(String id) {
 		String htm = "";
 		List<PicUploadResult> pics = treeTestMapper.fingPhotoById(id);
@@ -45,7 +42,6 @@ public class TreeTestServiceImpl implements TreeService {
 		return htm;
 	}
 
-	@Override
 	public String findPhotoBypId(String pId) {
 		String htm = "";
 		List<PicUploadResult> pics = treeTestMapper.fingPhotoBypId(pId);
@@ -62,7 +58,6 @@ public class TreeTestServiceImpl implements TreeService {
 		return htm;
 	}
 
-	@Override
 	public String findPhotoAll() {
 		String htm = "";
 		List<PicUploadResult> pics = treeTestMapper.fingPhotoAll();

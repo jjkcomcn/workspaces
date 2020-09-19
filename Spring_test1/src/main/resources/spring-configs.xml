@@ -44,20 +44,21 @@
 		<property name="defaultEncoding" value="UTF-8" />
 	</bean>
 
-	<bean
+	<!-- <bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">
 			<list>
 				<ref bean="jsonHttpMessageConverter" />
 			</list>
 		</property>
-	</bean>
+	</bean> -->
 	<bean id="jsonHttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
 		<property name="supportedMediaTypes">
 			<list>
 				<value>text/html;charset=UTF-8</value>
 				<!-- 注意 这是传输json格式，无论是ajax还是外部接口传输 -->
+				<value>text/json;charset=UTF-8</value>
 				<value>application/json;charset=UTF-8</value>
 			</list>
 		</property>
