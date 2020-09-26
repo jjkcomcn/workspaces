@@ -26,7 +26,6 @@ public class CodeMappingController {
         String splitstr = "\\|";
         // 字段列表
         String[] names = { "Id", "Name", "Sex", "Adress", "InDate", "InTime", "UpDate", "UpTime" };
-
         Class[] clazzs = { clazd, Class.class, String.class, String.class, String[].class };
         Object[] strs = { code, clazz, fileUrl, splitstr, names };
         CodeMapperTools tools = new CodeMapperTools();
