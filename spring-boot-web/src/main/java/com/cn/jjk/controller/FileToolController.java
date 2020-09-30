@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class FileToolController {
 
     @RequestMapping("index")
-    public void index() {
-        System.out.println("前端已进入！");
+    public String index() {
+        return "getfile";
     }
 }
