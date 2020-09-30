@@ -84,7 +84,7 @@
 
 	</dependencies>
 	<packaging>pom</packaging>
-  <modules>
+  <!-- <modules>
     <module>spring-boot-web</module>
-  </modules>
+  </modules> -->
 </project>
