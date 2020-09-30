@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jk.mapper.TreeTestMapper">
+
+	<!-- 查询zTree信息 -->
+	<select id="findTreeTest" resultType="com.jk.dao.TreeTestDao">
+		select * from treeitem
+	</select>
+
+	<!-- 修改树信息 -->
+	<update id="updatezTree" parameterType="com.jk.dao.TreeTestDao">
+		update treeitem set name
+		= #{name}, pId = #{pId}, open = #{open} where id=#{id}
+	</update>
+
+	<!-- 通过id查询图片信息 -->
+	<select id="fingPhotoById" resultType="com.jk.dao.PicUploadResult">
+		select * from img_item
+		where id = #{id}
+	</select>
+	<!-- 通过pId查询图片信息 -->
+	<select id="fingPhotoBypId" resultType="com.jk.dao.PicUploadResult">
+		select * from img_item
+		where pid = #{pId}
+	</select>
+	<!-- 查询全部图片信息 -->
+	<select id="fingPhotoAll" resultType="com.jk.dao.PicUploadResult">
+		select * from img_item
+	</select>
+</mapper>
