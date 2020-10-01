@@ -3,13 +3,31 @@
 <head>
 <meta charset="UTF-8">
 <title>获取文件内容</title>
+<!-- meta使用viewport以确保页面可自由缩放 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 引入 jQuery 库 -->
+<script type="text/javascript" src="jquery-easyui-1.6.10/jquery.min.js"></script>
+<!-- <script src="http://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script> -->
+<!-- 引入 jQuery Mobile 样式 -->
+<link rel="stylesheet"
+	href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
+<!-- 引入 jQuery Mobile 库 -->
+<script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
-<div id = "d1">
-<div id = "d2" style = "color:red; text-align:right">
-<a href = "http://localhost:8080/" >返回首页</a>
-</div>
-<h1>获取文件内容</h1>
-</div>
+	<div data-role="page">
+		<div data-role="header">
+			<div id="d2" style="color: red; text-align: right">
+				<a href="#" data-role="button" data-rel="back">返回</a>
+			</div>
+			<h1>欢迎来到我的主页</h1>
+		</div>
+		<div data-role="main" class="ui-content">
+			<h1 style="text-align: center">获取文件内容</h1>
+		</div>
+		<div data-role="footer">
+			<h1>底部文本</h1>
+		</div>
+	</div>
 </body>
 </html>

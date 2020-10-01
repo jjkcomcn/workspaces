@@ -1,0 +1,50 @@
+[{
+	"id":1,
+	"text":"首选项",
+	"children":[{
+		"id":11,
+		"text":"风景",
+		"state":"closed",
+		"children":[{
+			"id":111,
+			"text":"蓝天白云"
+		},{
+			"id":112,
+			"text":"三川地貌"
+		},{
+			"id":113,
+			"text":"风水宝地"
+		}]
+	},{
+		"id":12,
+		"text":"美女",
+		"state":"closed",
+		"children":[{
+			"id":121,
+			"text":"二次元"
+		},{
+			"id":122,
+			"text":"女神",
+			"attributes":{
+				"p1":"Custom Attribute1",
+				"p2":"Custom Attribute2"
+			}
+		},{
+			"id":123,
+			"text":"唯美"
+		},{
+			"id":124,
+			"text":"典雅",
+			"checked":true
+		}]
+	},{
+		"id":13,
+		"text":"连接地址1"
+	},{
+		"id":14,
+		"text":"连接地址2"
+	},{
+		"id":15,
+		"text":"连接地址3"
+	}]
+}]
