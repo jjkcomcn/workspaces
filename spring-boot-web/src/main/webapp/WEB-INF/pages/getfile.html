@@ -13,8 +13,13 @@
 	href="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.css">
 <!-- 引入 jQuery Mobile 库 -->
 <script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+tr {
+	border-bottom: 1px solid #d6d6d6;
+}
+</style>
 </head>
-<body>
+<body onload="load()">
 	<div data-role="page">
 		<div data-role="header">
 			<div id="d2" style="color: red; text-align: right">
@@ -23,11 +28,60 @@
 			<h1>欢迎来到我的主页</h1>
 		</div>
 		<div data-role="main" class="ui-content">
-			<h1 style="text-align: center">获取文件内容</h1>
+			<table data-role="table" data-mode="columntoggle"
+				class="ui-responsive" id="myTable">
+				<thead>
+					<tr>
+						<th data-priority="1">id</th>
+						<th data-priority="2">姓名</th>
+						<th data-priority="3">性别</th>
+						<th data-priority="4">地址</th>
+						<th data-priority="5">登记日期</th>
+						<th data-priority="5">登记时间</th>
+						<th data-priority="5">修改日期</th>
+						<th data-priority="5">修改时间</th>
+					</tr>
+				</thead>
+				<tbody data-json="data"></tbody>
+			</table>
+			<div id="m1" style="text-align: center">
+				<input type="button" value="重新获取文件内容" onclick="getStr()">
+			</div>
 		</div>
 		<div data-role="footer">
 			<h1>底部文本</h1>
 		</div>
 	</div>
 </body>
+<script type="text/javascript">
+	//页面加载事件
+	function load() {
+		console.log("欢迎光临！");
+		getData();
+	};
+	//按钮
+	getStr = function() {
+		getData();
+	};
+	// 获取数据
+	function getData() {
+		var url = "http://localhost:8080/getString.do";
+		$.post(url, function(result) {
+			console.log("打印请求返回内容：");
+			console.log(result);
+			dom = '';
+			var datas = result.data;
+			var datalen = datas.length;
+			for (i = 0; i < datas.length; i++) {
+				data = datas[i];
+				dom += '<tr>';
+				for ( var j in data) {
+					dom += '<td>' + data[j] + '</td>'
+				}
+				dom += '</tr>';
+			}
+			$('[data-json="data"]').html(dom);
+		}, "json");
+	};
+</script>
 </html>
