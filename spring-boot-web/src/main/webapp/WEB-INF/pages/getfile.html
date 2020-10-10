@@ -15,7 +15,7 @@
 <script src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <style>
 tr {
-	border-bottom: 1px solid #d6d6d6;
+	border-bottom: 2px solid #d6d6d6;
 }
 </style>
 </head>
@@ -29,7 +29,7 @@ tr {
 		</div>
 		<div data-role="main" class="ui-content">
 			<table data-role="table" data-mode="columntoggle"
-				class="ui-responsive" id="myTable">
+				class="ui-responsive ui-shadow" data-column-btn-text="显示或隐藏列" id="myTable">
 				<thead>
 					<tr>
 						<th data-priority="1">id</th>
@@ -40,6 +40,7 @@ tr {
 						<th data-priority="5">登记时间</th>
 						<th data-priority="5">修改日期</th>
 						<th data-priority="5">修改时间</th>
+						<th data-priority="5">操作</th>
 					</tr>
 				</thead>
 				<tbody data-json="data"></tbody>
@@ -66,22 +67,35 @@ tr {
 	// 获取数据
 	function getData() {
 		var url = "http://localhost:8080/getString.do";
-		$.post(url, function(result) {
-			console.log("打印请求返回内容：");
-			console.log(result);
-			dom = '';
-			var datas = result.data;
-			var datalen = datas.length;
-			for (i = 0; i < datas.length; i++) {
-				data = datas[i];
-				dom += '<tr>';
-				for ( var j in data) {
-					dom += '<td>' + data[j] + '</td>'
-				}
-				dom += '</tr>';
-			}
-			$('[data-json="data"]').html(dom);
-		}, "json");
+		$
+				.post(
+						url,
+						function(result) {
+							console.log("打印请求返回内容：");
+							console.log(result);
+							dom = '';
+							var datas = result.data;
+							var datalen = datas.length;
+							for (i = 0; i < datas.length; i++) {
+								data = datas[i];
+								dom += '<tr>';
+								for ( var j in data) {
+									dom += '<td>' + data[j] + '</td>'
+								}
+								var id = data.id;
+								dom += "<td><a href='javascript:void(0)' onclick='updateTd()'>更新</a> <a href='javascript:void(0)' onclick=\"deleteTd('"+ id + "')\">删除</a></td>";
+								dom += '</tr>';
+							}
+							$('[data-json="data"]').html(dom);
+						}, "json");
+	};
+	// 更新列
+	function updateTd() {
+		console.log("更新列信息");
+	};
+	// 删除列
+	function deleteTd(data) {
+		console.log("删除列id：" + data);
 	};
 </script>
 </html>
